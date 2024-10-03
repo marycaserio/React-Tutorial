@@ -1,11 +1,8 @@
-const Course = (course) => (
-  <div>
-    <p>{course.term} CS {course.number}: {course.title}</p>
-  </div>
-);
+import Course from './Course';
+import './CourseList.css'
 
 const CourseList = (courses) => (
-  <div>
+  <div className="course-list justify-content-center">
     { Object.values(courses).map((course) => Course(course)) }
   </div>
 );

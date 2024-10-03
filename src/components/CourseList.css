@@ -1,0 +1,6 @@
+.course-list {
+  display: grid;
+  width: 100%;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}

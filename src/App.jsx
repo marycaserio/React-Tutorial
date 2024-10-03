@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
 import CourseList from './components/CourseList';
 
@@ -32,10 +33,10 @@ const schedule = {
 };
 
 const App = () => (
-  <>
+  <div className="container">
     {Banner(schedule.title)}
     {CourseList(schedule.courses)}
-  </>
+  </div>
 );
 
 export default App;
