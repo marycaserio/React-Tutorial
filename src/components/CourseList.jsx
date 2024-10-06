@@ -1,9 +1,10 @@
 import Course from './Course';
 import './CourseList.css'
+import { terms } from "./TermSelector";
 
-const CourseList = (courses) => (
+const CourseList = ({courses, selection}) => (
   <div className="course-list justify-content-center">
-    { Object.values(courses).map((course) => Course(course)) }
+    { (Object.values(courses).filter((course) => course.term === terms[selection])).map((course) => <Course course={course} />) }
   </div>
 );
 

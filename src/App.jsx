@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
-import CourseList from './components/CourseList';
+import TermPage from './components/TermPage';
 import { useJsonQuery } from './utilities/Fetch'; 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -11,7 +11,7 @@ const Main = () => {
   if (isLoading) return <h1>Loading user data...</h1>;
   if (!data) return <h1>No user data found</h1>;
 
-  return <div> {Banner(data.title)} {CourseList(data.courses)} </div>;
+  return <div> {<Banner title={data.title} />} {<TermPage courses={data.courses} />} </div>;
 }
 
 const queryClient = new QueryClient();
