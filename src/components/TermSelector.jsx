@@ -8,7 +8,7 @@ const TermButton = ({term, selection, setSelection}) => (
   <div style={{paddingRight: "1em"}}>
     <input type="radio" id={term} className="btn-check" checked={term === selection} autoComplete="off"
       onChange={() => setSelection(term)} />
-    <label className="btn btn-success mb-1 p-2" htmlFor={term}>
+    <label className="btn btn-success mb-1 p-2" htmlFor={term} style={{ backgroundColor: term === selection ? "#4E2A84" : "#836EAA", border: term === selection ? "#4E2A84" : "#836EAA"}}>
     { term }
     </label>
   </div>
