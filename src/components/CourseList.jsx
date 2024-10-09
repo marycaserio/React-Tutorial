@@ -1,6 +1,6 @@
 import Course from './Course';
 import './Courses.css'
-import { terms } from "./TermSelector";
+import { terms } from './TermSelector';
 
 const CourseList = ({courses, selection, selectedList, toggleSelected}) => (
   <div className="course-list justify-content-center">
