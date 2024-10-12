@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Banner from './components/Banner';
 import TermPage from './components/TermPage';
-import { useJsonQuery } from './utilities/Fetch'; 
+import { useJsonQuery } from './utilities/fetch'; 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const Main = () => {
