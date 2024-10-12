@@ -1,4 +1,4 @@
-export const parseDays = (days) => {
+const parseDays = (days) => {
   let arr = [];
   for (let i = 0; i < days.length; i++) {
     if (days[i] != 'T') {
@@ -12,9 +12,9 @@ export const parseDays = (days) => {
   return arr;
 }
 
-export const dayOverlap = (daysA, daysB) => parseDays(daysA).some(elem => parseDays(daysB).includes(elem));
+const dayOverlap = (daysA, daysB) => parseDays(daysA).some(elem => parseDays(daysB).includes(elem));
 
-export const parseTime = (time) => time.replace(":", ".");
+const parseTime = (time) => time.replace(":", ".");
 
 const timeOverlap = (timeA, timeB) => {
   let [startA, endA] = parseTime(timeA).split('-');
@@ -23,7 +23,7 @@ const timeOverlap = (timeA, timeB) => {
   return (parseFloat(startA) < parseFloat(endB) && parseFloat(endA) > parseFloat(startB));
 }
 
-export const parseMeeting = (meeting) => {
+const parseMeeting = (meeting) => {
   if (meeting === '') {
     return [undefined, undefined];
   }
