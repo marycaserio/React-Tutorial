@@ -14,13 +14,13 @@ const parseDays = (days) => {
 
 const dayOverlap = (daysA, daysB) => parseDays(daysA).some(elem => parseDays(daysB).includes(elem));
 
-const parseTime = (time) => time.replace(":", ".");
+const parseTime = (time) => Number(time.replace(":", "."));
 
 const timeOverlap = (timeA, timeB) => {
-  let [startA, endA] = parseTime(timeA).split('-');
-  let [startB, endB] = parseTime(timeB).split('-');
-
-  return (parseFloat(startA) < parseFloat(endB) && parseFloat(endA) > parseFloat(startB));
+  let [startA, endA] = timeA.split('-');
+  let [startB, endB] = timeB.split('-');
+  
+  return (parseTime(startA) < parseTime(endB) && parseTime(endA) > parseTime(startB));
 }
 
 const parseMeeting = (meeting) => {
