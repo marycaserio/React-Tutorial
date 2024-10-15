@@ -4,7 +4,7 @@ import { terms } from './TermSelector';
 import CourseList from './CourseList';
 import Modal from './Modal';
 import CoursePlan from './CoursePlan'; 
-import { overlap } from '../utilities/conflicts'; 
+import { overlap } from '../utilities/conflictList';
 
 const TermPage = ({courses}) => {
   const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
