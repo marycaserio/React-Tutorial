@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFormData } from '../utilities/useFormData';
 import { parseTime, parseMeeting } from '../utilities/conflictList';
+import { useDbUpdate } from '../utilities/firebase';
 
 const compareTimes = (times) => {
   const [timeA, timeB] = times.split('-');
@@ -39,9 +40,9 @@ const ButtonBar = ({ message, disabled }) => {
       <button type="button" className="btn btn-outline-dark me-2" onClick={() => navigate('/')}>
         Cancel
       </button>
-      {/* <button type="submit" className="btn btn-primary me-auto" disabled={disabled}>
+      <button type="submit" className="btn btn-primary me-auto" disabled={disabled}>
         Submit
-      </button> */}
+      </button>
       <span className="p-2">{message}</span>
     </div>
   );
@@ -49,13 +50,16 @@ const ButtonBar = ({ message, disabled }) => {
 
 const CourseForm = () => {
   const location = useLocation();
-  const { course } = location.state || {};
+  const { courseKey, course } = location.state || {};
 
+  const [update, result] = useDbUpdate(`/courses/${courseKey}`);
   const [state, change] = useFormData(validateData, course);
 
   const submit = (evt) => {
     evt.preventDefault();
-    // TODO
+    if (!state.errors) {
+      update(state.values);
+    }
   };
 
   return (
@@ -63,10 +67,9 @@ const CourseForm = () => {
       <h2 style={{textAlignVertical: "center", textAlign: "center", margin: "1em"}}>Edit Course</h2>
       <InputField name="title" text="Course Title" state={state} change={change} />
       <InputField name="meets" text="Meeting Times" state={state} change={change} />
-      <ButtonBar message={null} disabled={true} />
+      <ButtonBar message={result?.message} disabled={false} />
     </form>
   );
 };
 
 export default CourseForm;
-

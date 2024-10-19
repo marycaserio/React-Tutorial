@@ -4,7 +4,7 @@ import { terms } from './TermSelector';
 
 const CourseList = ({courses, selection, selectedList, toggleSelected, conflictList}) => (
   <div className="course-list justify-content-center">
-    { (Object.values(courses).filter((course) => course.term === terms[selection])).map((course) => <Course course={course} courses={courses} selectedList={selectedList} toggleSelected={toggleSelected} conflictList={conflictList}/>) }
+    { (Object.entries(courses).filter(([key, course]) => course.term === terms[selection])).map(([key, course]) => <Course courseKey={key} course={course} courses={courses} selectedList={selectedList} toggleSelected={toggleSelected} conflictList={conflictList}/>) }
   </div>
 );
 
