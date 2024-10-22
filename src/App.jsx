@@ -2,11 +2,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Banner from './components/Banner';
 import TermPage from './components/TermPage';
-import { useJsonQuery } from './utilities/fetch'; 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CourseForm from './components/CourseForm';
 import { useDbData } from "./utilities/firebase";
+import Navigation from "./components/Navigation"
 
 const Main = () => {
   // const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
@@ -19,7 +19,7 @@ const Main = () => {
   return (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<div> {<Banner title={data.title} />} {<TermPage courses={data.courses} />} </div>} />
+      <Route path="/" element={<div> {<Banner title={data.title} />} {<Navigation />} {<TermPage courses={data.courses} />} </div>} />
       <Route path="/courseform" element={<CourseForm />} />
     </Routes>
   </BrowserRouter>
