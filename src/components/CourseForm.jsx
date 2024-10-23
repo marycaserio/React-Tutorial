@@ -13,7 +13,7 @@ const validateData = (key, val) => {
     case 'title':
       return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
     case 'meets':
-      return /(^$|(^(M|Tu|W|Th|F)+\s(2[0-3]|[01]?[0-9])\:([0-5][0-9])\-(2[0-3]|[01]?[0-9])\:([0-5][0-9])))/.test(val)
+      return /(^$|(^(M|Tu|W|Th|F)+\s(2[0-3]|[01]?[0-9])\:([0-5][0-9])\-(2[0-3]|[01]?[0-9])\:([0-5][0-9])$))/.test(val)
       ? val
         ? compareTimes(parseMeeting(val)[1])
           ? ''
